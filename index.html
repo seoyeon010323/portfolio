@@ -3,73 +3,81 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Seo Yeon</title>
+<title>Seo Yeon — Portfolio 2026</title>
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400&display=swap");
+  /* The Rose Atelier (PeachCreme) : fonts 폴더에 파일을 넣으면 저절로 써져요. 없으면 Gaegu 손글씨로 보여요 */
+  @font-face{font-family:"Rose Atelier"; font-weight:300 400; font-display:swap;
+    src:url("fonts/RoseAtelier.woff2") format("woff2"), url("fonts/RoseAtelier.otf") format("opentype"), url("fonts/RoseAtelier.ttf") format("truetype");}
+  @font-face{font-family:"Rose Atelier"; font-weight:500 800; font-display:swap;
+    src:url("fonts/RoseAtelier-Bold.woff2") format("woff2"), url("fonts/RoseAtelier-Bold.otf") format("opentype"), url("fonts/RoseAtelier-Bold.ttf") format("truetype"), url("fonts/RoseAtelier.otf") format("opentype");}
   @font-face{font-family:"Y Universe"; font-weight:300 400; font-display:swap; src:url("fonts/YUniverse-L.otf") format("opentype");}
   @font-face{font-family:"Y Universe"; font-weight:500 800; font-display:swap; src:url("fonts/YUniverse-B.otf") format("opentype");}
-  /* 종이 + 먹색 톤 */
+  /* 화병 첫 페이지 : 종이 + 크레파스 꽃 + 자유로운 손글씨 */
   :root{
-    --paper:#F3F0EA;
-    --ink:#211A16;
-    --soft:#A69E95;
-    --sans:"Y Universe", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-    --hand:"Nanum Pen Script", "Y Universe", cursive;
-    --gutter:clamp(16px, 1.6vw, 24px);
-    --rule-h:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 6' preserveAspectRatio='none'%3E%3Cpath d='M0 3.3C38 2.2 71 4.3 118 3.1S196 2 241 3.5 332 4.3 400 2.7' fill='none' stroke='%23000' stroke-width='1.3' vector-effect='non-scaling-stroke' stroke-linecap='round'/%3E%3C/svg%3E");
+    --paper:#F8F1E7;      /* 서연님 그림 종이색 */
+    --ink:#4A1D19;        /* 그림 선 색 (적갈색) */
+    --soft:#9C8378;
+    --hand:"Rose Atelier", "Gaegu", "Nanum Pen Script", "Y Universe", cursive;
+    --gutter:clamp(16px, 2vw, 30px);
+    --title-fs:clamp(58px, 10.5vw, 170px);
   }
   *{box-sizing:border-box}
   html, body{height:100%}
   body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font-family:var(--sans); font-size:14.5px; line-height:1.4;
-    display:flex; flex-direction:column;
+    margin:0; background:var(--paper); color:var(--ink); font-family:var(--hand); font-weight:300;
+    display:flex; flex-direction:column; min-height:100svh; overflow:hidden;
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit; text-decoration:none}
-  a:focus-visible, button:focus-visible, summary:focus-visible{outline:1px solid var(--ink); outline-offset:3px}
-  .cap-l{font-size:11px; letter-spacing:.18em; text-transform:uppercase}
-  .rule{height:6px; background:currentColor; -webkit-mask:var(--rule-h) center/100% 100% no-repeat; mask:var(--rule-h) center/100% 100% no-repeat}
+  .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 
-  /* 맨 위 줄 */
-  .top{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px; padding:14px var(--gutter) 10px}
-  .top .name{font-size:19px; letter-spacing:.2em; text-transform:uppercase}
+  /* 자유로운 손글씨 : 글자마다 조금씩 삐뚤빼뚤 (자바스크립트가 나눠요) */
+  .hw .ch{display:inline-block; white-space:pre}
+  .hw .ch.alt{font-feature-settings:"salt" 1, "ss01" 1}
+
+  .top{display:grid; grid-template-columns:1fr auto 1fr; align-items:start; gap:16px; padding:14px var(--gutter) 0; font-size:clamp(17px, 1.6vw, 22px); line-height:1.1; position:relative; z-index:6}
   .top .right{justify-self:end}
-  .band{margin:0; text-align:center; padding:7px var(--gutter) 6px}
+  .top .name{font-size:clamp(20px, 2vw, 28px)}
   .info{position:relative}
-  .info summary{list-style:none; cursor:pointer; background:linear-gradient(currentColor, currentColor) 0 100%/100% 1px no-repeat; padding-bottom:2px; display:inline-block}
+  .info summary{list-style:none; cursor:pointer}
   .info summary::-webkit-details-marker{display:none}
-  .info p{position:absolute; left:0; top:100%; margin:10px 0 0; width:max-content; max-width:80vw; background:var(--paper); z-index:30; user-select:text; letter-spacing:.08em; text-transform:none; font-size:13px; line-height:1.6}
+  .info summary:hover{opacity:.6}
+  .info p{position:absolute; left:0; top:100%; margin:10px 0 0; width:max-content; max-width:80vw; background:var(--paper); font-size:18px; line-height:1.35; z-index:30}
+  .band{margin:6px 0 0; text-align:center; font-size:clamp(15px, 1.35vw, 19px); color:var(--soft)}
 
-  /* 손으로 그린 시계 */
-  .stage{flex:1; display:grid; place-items:center; min-height:0; padding:8px var(--gutter)}
-  .clock{position:relative; width:min(100%, 64vh, 570px); aspect-ratio:1}
+  /* 시계 무대 */
+  .stage{flex:1; display:grid; place-items:center; min-height:0; padding:4px 12px}
+  .clock{position:relative; aspect-ratio:1; width:min(94vw, calc(100svh - 124px - var(--title-fs) * .95), 640px)}
   .clock svg.face{position:absolute; inset:0; width:100%; height:100%; overflow:visible}
-  .clock .hand{transform-origin:500px 500px; transition:transform .7s cubic-bezier(.3,1.4,.5,1)}
+  .clock .hand{transition:transform .8s cubic-bezier(.3,1.35,.5,1)}
+  .clock .hand.sec{transition:none}
   .num{
     position:absolute; transform:translate(-50%,-50%) rotate(var(--rot)) scale(var(--sc));
-    font-family:var(--hand); font-size:clamp(28px, 4.4vw, 50px); line-height:1;
-    padding:10px 14px; color:var(--ink); z-index:4; filter:url(#pencilText);
-    transition:color .2s, opacity .2s;
+    font-family:var(--hand); font-weight:400; font-size:clamp(26px, 4.6vw, 52px); line-height:1;
+    padding:10px 14px; color:var(--ink); z-index:4; transition:color .2s, opacity .25s;
   }
   a.num{cursor:pointer}
-  span.num{color:var(--soft)}
-  .clock.active .num{opacity:.3}
+  span.num{color:var(--soft); opacity:.75}
+  .clock.active .num{opacity:.28}
   .clock.active .num.on{opacity:1; text-shadow:0 0 3px var(--paper), 0 0 8px var(--paper), 0 0 14px var(--paper)}
+  /* 프로젝트 이름 · 연도 : 시계 바깥 오른쪽 */
   .label{
-    position:absolute; left:50%; top:66%; transform:translate(-50%,-50%);
-    font-size:11px; letter-spacing:.18em; text-transform:uppercase;
-    text-align:center; white-space:nowrap; z-index:2;
+    position:absolute; left:calc(100% + clamp(18px, 3vw, 48px)); top:56%; transform:translateY(-50%);
+    font-size:clamp(24px, 2.8vw, 40px); line-height:1.05; text-align:left; white-space:nowrap; z-index:2;
   }
-  .label small{display:block; margin-top:4px; letter-spacing:.12em; color:#6E655D}
+  .label small{display:block; margin-top:.35em; font-size:.55em; color:var(--soft)}
+  .label.at-r{transform:translate(0,-50%); text-align:left}
+  .label.at-l{transform:translate(-100%,-50%); text-align:right}
+  .label.at-t{transform:translate(-50%,-100%); text-align:center}
+  .label.at-b{transform:translate(-50%,0); text-align:center}
   /* 숫자에 올리면 뜨는 사진 : 흰 테두리 없이, 배경 없는 PNG는 그대로 */
   .pop{
     position:fixed; left:0; top:0; width:clamp(110px, 11.5vw, 200px); height:auto; max-height:28vh; object-fit:contain; z-index:20; pointer-events:none;
-    filter:drop-shadow(0 8px 14px rgba(33,26,22,.18));
+    filter:drop-shadow(0 8px 14px rgba(74,29,25,.18));
     transform:translate(-50%,-50%) rotate(var(--rot)) scale(.4); opacity:0;
     transition:opacity .12s ease, transform .15s ease;
   }
-  /* 통통 튀면서 튀어나와요 */
   .pop.on{opacity:1; transform:translate(-50%,-50%) rotate(var(--rot)) scale(1); animation:boing .62s cubic-bezier(.3,1.6,.5,1) both; animation-delay:calc(var(--i, 0) * 95ms)}
   @keyframes boing{
     0%  {transform:translate(-50%,-50%) rotate(var(--rot)) scale(.35); opacity:0}
@@ -80,30 +88,29 @@
     100%{transform:translate(-50%,-50%) rotate(var(--rot)) scale(1)}
   }
 
-  /* 큰 제목 */
+  /* 큰 제목 : 처음엔 이름만 → 커서를 세 번 움직이면 'Portfolio.' */
   .title{
     margin:0; font-weight:300; white-space:nowrap;
-    font-size:clamp(44px, 9vw, 150px); line-height:.95; letter-spacing:-.04em;
+    font-size:var(--title-fs); line-height:.95;
     display:flex; justify-content:center; align-items:baseline;
     padding:0 var(--gutter) calc(10px + env(safe-area-inset-bottom,0px));
   }
-  /* 처음엔 이름만 가운데 → 커서를 세 번 움직이면 이름이 옆으로 밀리고 'Portfolio.'가 나와요 */
   .title .pf{
-    display:inline-block; overflow:hidden; max-width:0; opacity:0; margin-left:0;
-    transform:translateY(.12em);
+    display:inline-block; overflow:hidden; max-width:0; opacity:0; margin-left:0; transform:translateY(.12em);
     transition:max-width 1s cubic-bezier(.2,.8,.2,1), margin-left 1s cubic-bezier(.2,.8,.2,1), opacity .6s ease .35s, transform .8s cubic-bezier(.2,.8,.2,1) .3s;
   }
-  .title.open .pf{max-width:8em; margin-left:.28em; opacity:1; transform:none}
+  .title.open .pf{max-width:9em; margin-left:.3em; opacity:1; transform:none}
 
+  @media (min-width:641px) and (max-width:1100px){   /* 오른쪽에 이름 자리 남기기 */
+    .clock{width:min(calc(100vw - 440px), calc(100svh - 124px - var(--title-fs) * .95), 640px)}
+    .label{left:calc(100% + 16px); font-size:clamp(20px, 2.6vw, 30px)}
+  }
   @media (max-width:640px){
-    body{height:auto; min-height:100%}
-    .clock{width:100%}
+    .top{grid-template-columns:auto 1fr} .top .name{display:none}
+    .title{white-space:normal; flex-wrap:wrap}
+    .clock{width:min(96vw, calc(100svh - 150px - var(--title-fs) * 1.9))}
     .pop{display:none}   /* 휴대폰은 누르면 바로 이동해요 */
-    .title{white-space:normal; flex-wrap:wrap; justify-content:center}
-    .top .name{font-size:15px}
-    .top .right{display:none}
-    .top{grid-template-columns:auto 1fr}
-    .top .name{justify-self:end}
+    .label{left:50%; top:calc(100% + 4px); transform:translateX(-50%); text-align:center; font-size:22px}
   }
   @media (prefers-reduced-motion:reduce){ .pop, .num, .clock .hand, .title .pf{transition:none} .pop.on{animation:none} }
 </style>
@@ -111,28 +118,26 @@
 <body>
 
 <header class="top">
-  <details class="info cap-l">
-    <summary>Info</summary>
+  <details class="info">
+    <summary data-hw>info</summary>
     <p>Lee SeoYeon — Fashion &amp; Textile Design<br>seoyeon010323@gmail.com<br>+82 01080045410</p>
   </details>
-  <span class="name">Seo Yeon</span>
-  <span class="cap-l right">Portfolio 2026</span>
+  <span class="name" data-hw>Seo Yeon</span>
+  <span class="right" data-hw>portfolio 2026</span>
 </header>
-<div class="rule"></div>
-<p class="band cap-l">Choose an hour — one hour, one project</p>
-<div class="rule"></div>
+<p class="band" data-hw>choose an hour — one hour, one project</p>
 
-<div class="stage">
+<main class="stage">
   <div class="clock" id="clock" aria-label="시계 숫자를 누르면 프로젝트로 이동해요">
-    <div class="label" id="label">Portfolio 2026<small>Choose an hour</small></div>
+    <div class="label" id="label"><span data-hw>portfolio 2026</span><small data-hw>choose an hour</small></div>
   </div>
-</div>
+</main>
 
-<h1 class="title" id="title"><span class="nm">Seo Yeon</span><span class="pf">Portfolio.</span></h1>
+<h1 class="title" id="title"><span class="nm" data-hw>Seo Yeon</span><span class="pf" data-hw>Portfolio.</span></h1>
 
 <script>
 (function(){
-  /* 시계 숫자 1개 = 프로젝트 1개 (Portfolio Builder가 만든 목록) */
+  /* 시계 숫자 1개 = 프로젝트 1개 · 연필로 그린 회중시계 */
   var hours = {
   "1": [
     [
@@ -156,44 +161,63 @@
     "syore.html"
   ]
 };
-
   var clock = document.getElementById('clock');
   var label = document.getElementById('label');
-  var rest = label.innerHTML;
   var NS = 'http://www.w3.org/2000/svg';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var touch = window.matchMedia('(hover: none)').matches;
+  var CX = 500, CY = 560, R = 400;                        // 시계 가운데 · 크기 (위에 용두 자리)
 
-  /* 손그림 느낌을 위한 흔들림 (매번 같은 모양이 나오도록 고정된 씨앗) */
+  /* 손그림 흔들림 (늘 같은 모양) */
   var seed = 11;
   function rnd(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
   function j(a){ return (rnd() * 2 - 1) * a; }
+  function rng(s0){ var s = s0 % 2147483647 || 7; return function(){ s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; }; }
 
-  /* 점들을 부드러운 곡선으로 */
+  /* 자유로운 손글씨 : 글자마다 기울기·높이·크기·간격을 조금씩 */
+  function hw(el, sd){
+    var t = el.textContent, R2 = rng(sd || 11), out = document.createDocumentFragment(), k = 0;
+    el.textContent = '';
+    for (var i = 0; i < t.length; i++){
+      var c = t[i], s = document.createElement('span'); s.className = 'ch'; s.textContent = c;
+      if (c !== ' '){
+        s.style.transform = 'translateY(' + ((R2() - .5) * .12).toFixed(3) + 'em) rotate(' + ((R2() - .5) * 7).toFixed(1) + 'deg) scale(' + (.94 + R2() * .14).toFixed(2) + ')';
+        if (R2() < .35) s.classList.add('alt');   // 로즈 아틀리에의 대체 글자를 군데군데 섞어요
+        s.style.marginRight = (R2() * .09).toFixed(3) + 'em';
+      } else s.style.width = (.28 + R2() * .18).toFixed(2) + 'em';
+      s.style.setProperty('--k', k++); out.appendChild(s);
+    }
+    el.appendChild(out); el.classList.add('hw');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-hw]'), function(el, i){ hw(el, 31 + i * 17); });
+
+  function f1(n){ return (+n).toFixed(1); }
   function smooth(pts){
-    var d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+    var d = 'M' + f1(pts[0][0]) + ' ' + f1(pts[0][1]);
     for (var i = 0; i < pts.length - 1; i++){
       var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
-      d += 'C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' '
-         + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' '
-         + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+      d += 'C' + f1(p1[0] + (p2[0] - p0[0]) / 6) + ' ' + f1(p1[1] + (p2[1] - p0[1]) / 6) + ' ' + f1(p2[0] - (p3[0] - p1[0]) / 6) + ' ' + f1(p2[1] - (p3[1] - p1[1]) / 6) + ' ' + f1(p2[0]) + ' ' + f1(p2[1]);
     }
     return d;
   }
-  /* 삐뚤빼뚤한 원 : 시작점을 살짝 넘겨서 손으로 이은 것처럼 */
-  function wobblyCircle(cx, cy, R, squash, over){
-    var ph = [rnd() * 6.28, rnd() * 6.28, rnd() * 6.28], start = rnd() * 6.28, pts = [];
-    for (var t = 0; t <= 6.283 + over; t += 0.16){
-      var r = R * (1 + 0.022 * Math.sin(2 * t + ph[0]) + 0.012 * Math.sin(3 * t + ph[1]) + 0.006 * Math.sin(7 * t + ph[2]));
-      pts.push([cx + Math.cos(t + start) * r, cy + Math.sin(t + start) * r * squash]);
+  /* 삐뚤빼뚤 원 : 시작점을 살짝 넘겨서 손으로 이은 것처럼 */
+  function circ(cx, cy, r, amp, over){
+    var ph = [rnd() * 6.28, rnd() * 6.28, rnd() * 6.28], st = rnd() * 6.28, pts = [];
+    for (var t = 0; t <= 6.283 + (over || .2); t += .12){
+      var rr = r * (1 + amp * (Math.sin(2 * t + ph[0]) * .6 + Math.sin(3 * t + ph[1]) * .3 + Math.sin(7 * t + ph[2]) * .1));
+      pts.push([cx + Math.cos(t + st) * rr, cy + Math.sin(t + st) * rr]);
     }
     return smooth(pts);
   }
   function line(x1, y1, x2, y2, bend){
-    var mx = (x1 + x2) / 2 + j(bend), my = (y1 + y2) / 2 + j(bend);
-    return 'M' + x1 + ' ' + y1 + 'Q' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' ' + x2 + ' ' + y2;
+    var mx = (x1 + x2) / 2 + j(bend || 1), my = (y1 + y2) / 2 + j(bend || 1);
+    return 'M' + f1(x1) + ' ' + f1(y1) + 'Q' + f1(mx) + ' ' + f1(my) + ' ' + f1(x2) + ' ' + f1(y2);
   }
-  function el(tag, attrs, parent){
+  function pol(deg, d){ var a = deg * Math.PI / 180; return [CX + Math.sin(a) * d, CY - Math.cos(a) * d]; }
+  function el(tag, attrs, parent, text){
     var e = document.createElementNS(NS, tag);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
     if (parent) parent.appendChild(e);
     return e;
   }
@@ -201,74 +225,118 @@
   var svg = el('svg', { 'class': 'face', viewBox: '0 0 1000 1000', 'aria-hidden': 'true' });
   var defs = el('defs', {}, svg);
   /* 연필 질감 : 선이 살짝 번지고 군데군데 끊겨요 */
-  var f = el('filter', { id: 'pencil', x: '-10%', y: '-10%', width: '120%', height: '120%' }, defs);
-  el('feTurbulence', { type: 'fractalNoise', baseFrequency: '0.7', numOctaves: '2', seed: '3', result: 'noise' }, f);
-  el('feDisplacementMap', { 'in': 'SourceGraphic', in2: 'noise', scale: '4', xChannelSelector: 'R', yChannelSelector: 'G', result: 'wob' }, f);
-  el('feTurbulence', { type: 'fractalNoise', baseFrequency: '1.6', numOctaves: '2', seed: '8', result: 'grain' }, f);
-  el('feColorMatrix', { 'in': 'grain', type: 'matrix', values: '0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.35', result: 'mask' }, f);
-  el('feComposite', { 'in': 'wob', in2: 'mask', operator: 'in' }, f);
-  /* 숫자용 연필 질감 : 가는 획이 지워지지 않게 더 약하게 */
-  var ft = el('filter', { id: 'pencilText', x: '-10%', y: '-10%', width: '120%', height: '120%' }, defs);
-  el('feTurbulence', { type: 'fractalNoise', baseFrequency: '0.8', numOctaves: '2', seed: '3', result: 'noise' }, ft);
-  el('feDisplacementMap', { 'in': 'SourceGraphic', in2: 'noise', scale: '1.6', xChannelSelector: 'R', yChannelSelector: 'G', result: 'wob' }, ft);
-  el('feTurbulence', { type: 'fractalNoise', baseFrequency: '1.8', numOctaves: '1', seed: '8', result: 'grain' }, ft);
-  el('feColorMatrix', { 'in': 'grain', type: 'matrix', values: '0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.1 1.75', result: 'mask' }, ft);
-  el('feComposite', { 'in': 'wob', in2: 'mask', operator: 'in' }, ft);
+  function pencil(id, freq, scale, gr){
+    var f = el('filter', { id: id, x: '-10%', y: '-10%', width: '120%', height: '120%' }, defs);
+    el('feTurbulence', { type: 'fractalNoise', baseFrequency: freq, numOctaves: '2', seed: '3', result: 'noise' }, f);
+    el('feDisplacementMap', { 'in': 'SourceGraphic', in2: 'noise', scale: scale, xChannelSelector: 'R', yChannelSelector: 'G', result: 'wob' }, f);
+    el('feTurbulence', { type: 'fractalNoise', baseFrequency: '1.6', numOctaves: '2', seed: '8', result: 'grain' }, f);
+    el('feColorMatrix', { 'in': 'grain', type: 'matrix', values: '0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -' + gr + ' ' + (gr * .78 + .12).toFixed(2), result: 'mask' }, f);
+    el('feComposite', { 'in': 'wob', in2: 'mask', operator: 'in' }, f);
+  }
+  pencil('pencil', '.7', '3.2', 3);
+  pencil('pencilSoft', '.8', '1.4', 1.1);
+  var INK = 'var(--ink)', PAPER = 'var(--paper)';
+  function g0(parent, soft){ return el('g', { filter: 'url(#' + (soft ? 'pencilSoft' : 'pencil') + ')', fill: 'none', stroke: INK, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, parent); }
 
-  var g = el('g', { filter: 'url(#pencil)', fill: 'none', stroke: '#211A16', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, svg);
-  var body = el('g', { transform: 'rotate(-5 500 500)' }, g);
-  el('path', { d: wobblyCircle(500, 500, 430, 0.97, 0.35), 'stroke-width': '6' }, body);
-  el('path', { d: wobblyCircle(504, 496, 424, 0.962, 0.18), 'stroke-width': '3', opacity: '.6' }, body);
-  /* 옆에 달린 용두 (태엽 손잡이) */
-  el('path', { d: line(74, 498, 58, 499, 1.5), 'stroke-width': '5' }, body);
-  el('path', { d: 'M50 452C44 470 44 528 50 546C56 552 62 548 63 540C66 520 66 478 63 458C62 450 55 447 50 452Z', 'stroke-width': '4.5' }, body);
-  /* 바늘 */
-  var hourHand = el('g', { 'class': 'hand' }, g);
-  el('path', { d: line(500, 500, 500, 290, 8), 'stroke-width': '6.5' }, hourHand);
-  var minHand = el('g', { 'class': 'hand' }, g);
-  el('path', { d: line(500, 500, 500, 170, 10), 'stroke-width': '4.5' }, minHand);
-  el('circle', { cx: 500, cy: 500, r: 15, 'stroke-width': '5', fill: '#F3F0EA' }, g);
+  var body = g0(svg), fine = g0(svg, true);
+
+  /* ① 용두 · 고리 (회중시계 꼭대기) */
+  var top = CY - R;
+  el('path', { d: line(CX - 24, top + 4, CX - 24, top - 34, .6) + line(CX + 24, top + 4, CX + 24, top - 34, .6), 'stroke-width': 4 }, body);   // 목
+  el('path', { d: line(CX - 30, top - 34, CX + 30, top - 34, .8), 'stroke-width': 3.5 }, body);
+  // 용두 (톱니 무늬 태엽)
+  var kx0 = CX - 42, kx1 = CX + 42, ky0 = top - 88, ky1 = top - 36;
+  el('path', { d: 'M' + (kx0 + 8) + ' ' + ky0 + 'L' + (kx1 - 8) + ' ' + ky0 + 'Q' + kx1 + ' ' + ky0 + ' ' + kx1 + ' ' + (ky0 + 8) + 'L' + kx1 + ' ' + (ky1 - 8) + 'Q' + kx1 + ' ' + ky1 + ' ' + (kx1 - 8) + ' ' + ky1 + 'L' + (kx0 + 8) + ' ' + ky1 + 'Q' + kx0 + ' ' + ky1 + ' ' + kx0 + ' ' + (ky1 - 8) + 'L' + kx0 + ' ' + (ky0 + 8) + 'Q' + kx0 + ' ' + ky0 + ' ' + (kx0 + 8) + ' ' + ky0, 'stroke-width': 4 }, body);
+  for (var kx = kx0 + 10; kx < kx1 - 4; kx += 9) el('path', { d: line(kx, ky0 + 6, kx + j(1), ky1 - 6, .5), 'stroke-width': 2.2, opacity: .85 }, fine);
+  // 고리
+  el('path', { d: circ(CX, ky0 - 38, 38, .02, .3), 'stroke-width': 4 }, body);
+  el('path', { d: circ(CX, ky0 - 38, 29, .025, .15), 'stroke-width': 1.8, opacity: .55 }, fine);
+
+  /* ② 테두리 : 세 겹 + 사이 빗금 음영 */
+  el('path', { d: circ(CX, CY, R, .012, .35), 'stroke-width': 6 }, body);
+  el('path', { d: circ(CX + 3, CY - 2, R - 9, .01, .2), 'stroke-width': 2.6, opacity: .65 }, body);
+  el('path', { d: circ(CX, CY, R - 34, .008, .25), 'stroke-width': 3 }, body);
+  for (var a = 0; a < 360; a += 3.2){                     // 테두리 빗금 (오른쪽 아래가 조금 더 진해요)
+    var shade = .25 + .45 * Math.max(0, Math.cos((a - 135) * Math.PI / 180));
+    var p1 = pol(a + 2, R - 30), p2 = pol(a - 2, R - 12);
+    el('path', { d: line(p1[0], p1[1], p2[0], p2[1], .4), 'stroke-width': 1.9, opacity: Math.min(1, shade + .15).toFixed(2) }, fine);
+  }
+  for (var a2 = 95; a2 < 185; a2 += 2.4){                  // 바깥 그림자 빗금
+    var q1 = pol(a2, R + 8), q2 = pol(a2 + 3, R + 22);
+    el('path', { d: line(q1[0], q1[1], q2[0], q2[1], .3), 'stroke-width': 1.7, opacity: .4 }, fine);
+  }
+  [0, 90, 180, 270].forEach(function(a3){ var s = pol(a3, R - 21); el('path', { d: circ(s[0], s[1], 5.5, .05, .2), 'stroke-width': 2 }, body); });   // 작은 나사
+
+  /* ③ 분 눈금 : 60칸 (정시는 길게) */
+  var T0 = R - 50, T1 = R - 86;
+  el('path', { d: circ(CX, CY, T0, .006, .2), 'stroke-width': 2.4, opacity: .9 }, fine);
+  el('path', { d: circ(CX, CY, T1 + 14, .006, .2), 'stroke-width': 1.8, opacity: .75 }, fine);
+  for (var m = 0; m < 60; m++){
+    var big = m % 5 === 0, u1 = pol(m * 6, T0 - 2), u2 = pol(m * 6 + j(.4), big ? T1 : T1 + 16);
+    el('path', { d: line(u1[0], u1[1], u2[0], u2[1], .3), 'stroke-width': big ? 3.6 : 2 }, big ? body : fine);
+  }
+  /* ④ 안쪽 점선 원 + 가는 원 */
+  for (var dd = 0; dd < 360; dd += 6){ var dp = pol(dd, 168); el('circle', { cx: f1(dp[0] + j(.8)), cy: f1(dp[1] + j(.8)), r: 2.4, fill: INK, stroke: 'none', opacity: .7 }, svg); }
+  el('path', { d: circ(CX, CY, 152, .01, .2), 'stroke-width': 1.6, opacity: .55 }, fine);
+
+  /* ⑥ 바늘 : 시침(동그라미 고리) · 분침(창 모양) · 초침(추) */
+  function hand(cls){ var g = el('g', { 'class': 'hand ' + cls }, svg); g.style.transformOrigin = CX + 'px ' + CY + 'px'; return g; }
+  var hourHand = hand('hr'), hb = g0(hourHand), hf = g0(hourHand, true);
+  el('path', { d: line(CX, CY + 36, CX, CY - 150, 2), 'stroke-width': 7 }, hb);
+  el('path', { d: circ(CX, CY - 176, 24, .04, .25), 'stroke-width': 4.5 }, hb);
+  el('path', { d: 'M' + (CX - 14) + ' ' + (CY - 196) + 'Q' + CX + ' ' + (CY - 214) + ' ' + CX + ' ' + (CY - 232) + 'Q' + CX + ' ' + (CY - 214) + ' ' + (CX + 14) + ' ' + (CY - 196), 'stroke-width': 4.5, fill: INK }, hb);
+  el('path', { d: circ(CX, CY - 176, 11, .05, .1), 'stroke-width': 2, opacity: .6 }, hf);
+  var minHand = hand('mn'), mb = g0(minHand), mf = g0(minHand, true);
+  el('path', { d: line(CX, CY + 56, CX, CY - 262, 3), 'stroke-width': 4.5 }, mb);
+  el('path', { d: circ(CX, CY - 238, 13, .05, .25), 'stroke-width': 3 }, mb);
+  el('path', { d: 'M' + (CX - 11) + ' ' + (CY - 262) + 'L' + CX + ' ' + (CY - 300) + 'L' + (CX + 11) + ' ' + (CY - 262) + 'Z', 'stroke-width': 3, fill: INK }, mb);
+  el('path', { d: line(CX - 9, CY + 46, CX + 9, CY + 46, .4), 'stroke-width': 3 }, mf);
+  var secHand = hand('sec'), sb = g0(secHand, true);
+  el('path', { d: line(CX, CY + 80, CX, CY - 318, 2), 'stroke-width': 2.4 }, sb);
+  el('circle', { cx: CX, cy: CY + 66, r: 10, fill: INK, 'stroke-width': 1.5 }, sb);
+  // 가운데 단추
+  el('circle', { cx: CX, cy: CY, r: 19, fill: PAPER, stroke: 'none' }, svg);
+  var cap = g0(svg); el('path', { d: circ(CX, CY, 19, .04, .2), 'stroke-width': 4 }, cap);
+  el('circle', { cx: CX, cy: CY, r: 6, fill: INK }, svg);
   clock.appendChild(svg);
 
-  function setHands(hDeg, mDeg){
-    hourHand.style.transform = 'rotate(' + hDeg + 'deg)';
-    minHand.style.transform = 'rotate(' + mDeg + 'deg)';
-  }
+  function setHands(hDeg, mDeg){ hourHand.style.transform = 'rotate(' + hDeg + 'deg)'; minHand.style.transform = 'rotate(' + mDeg + 'deg)'; }
   var nowH = 0, nowM = 0;
   function tick(){
     var d = new Date();
-    nowM = d.getMinutes() * 6 + d.getSeconds() * 0.1;
+    nowM = d.getMinutes() * 6 + d.getSeconds() * .1;
     nowH = ((d.getHours() % 12) + d.getMinutes() / 60) * 30;
     if (!clock.classList.contains('active')) setHands(nowH, nowM);
   }
   tick(); setInterval(tick, 20000);
+  /* 초침 : 1초마다 톡톡 (움직임 줄이기면 가만히) */
+  function secTick(){
+    var d = new Date(), s = d.getSeconds();
+    secHand.style.transform = 'rotate(' + (s * 6) + 'deg)';
+  }
+  secTick(); if (!reduced) setInterval(secTick, 1000);
 
-  var items = [];
+  /* ⑦ 숫자 (손글씨) = 프로젝트 */
+  var items = [], NR = 27.2;                               // 숫자 자리 : 시계 크기의 %
   for (var h = 1; h <= 12; h++){
-    var a = (h / 12) * Math.PI * 2;                 // 12시가 맨 위
-    var x = 50 + Math.sin(a) * 34 + j(1.2), y = 50 - Math.cos(a) * 33 + j(1.2);
-    var d = hours[h];
-    var n = document.createElement(d ? 'a' : 'span');
-    n.className = 'num';
-    n.textContent = h;
+    var ang = (h / 12) * Math.PI * 2;
+    var x = 50 + Math.sin(ang) * NR + j(.8), y = CY / 10 - Math.cos(ang) * NR + j(.8);
+    var dh = hours[h];
+    var n = document.createElement(dh ? 'a' : 'span');
+    n.className = 'num'; n.textContent = h;
     n.style.left = x + '%'; n.style.top = y + '%';
     n.style.setProperty('--rot', j(9).toFixed(1) + 'deg');
-    n.style.setProperty('--sc', (1 + j(0.14)).toFixed(2));
+    n.style.setProperty('--sc', (1 + j(.12)).toFixed(2));
     clock.appendChild(n);
-
-    if (d){
-      n.href = d[3];
-      n.setAttribute('aria-label', h + '시 — ' + d[1] + ', ' + d[2]);
-      // 사진 3~4장 : 올릴 때마다 화면 빈 곳 여기저기에 한 장씩 떠요 (자리는 show()에서 정해요)
-      var srcs = (Array.isArray(d[0]) ? d[0] : [d[0]]).filter(Boolean).slice(0, 4);
+    if (dh){
+      n.href = dh[3];
+      n.setAttribute('aria-label', h + '시 — ' + dh[1] + ', ' + dh[2]);
+      var srcs = (Array.isArray(dh[0]) ? dh[0] : [dh[0]]).filter(Boolean).slice(0, 4);
       var imgs = srcs.map(function(src, k){
-        var img = document.createElement('img');
-        img.className = 'pop'; img.src = src; img.alt = '';
-        img.style.setProperty('--i', k);
-        document.body.appendChild(img);
-        return img;
+        var img = document.createElement('img'); img.className = 'pop'; img.src = src; img.alt = '';
+        img.style.setProperty('--i', k); document.body.appendChild(img); return img;
       });
-      items.push({ h: h, el: n, imgs: imgs, d: d });
+      items.push({ h: h, el: n, imgs: imgs, d: dh });
       (function(it){
         function on(){ show(it); }
         it.el.addEventListener('mouseenter', on);
@@ -276,71 +344,95 @@
         it.el.addEventListener('mouseleave', function(){ show(null); });
         it.el.addEventListener('blur', function(){ show(null); });
       })(items[items.length - 1]);
-    } else {
-      n.setAttribute('aria-hidden', 'true');
-    }
+    } else n.setAttribute('aria-hidden', 'true');
   }
 
-  /* 빈 곳 찾기 : 시계·위쪽 글씨·아래 큰 제목을 피해서, 사진끼리도 안 겹치게 무작위로 */
+  /* 가운데 글씨 */
+  var restHTML = label.innerHTML;
+  function setLabel(big, small){
+    label.innerHTML = '';
+    var b = document.createElement('span'); b.textContent = big; label.appendChild(b); hw(b, 300 + big.length * 7);
+    if (small){ var sm = document.createElement('small'); sm.textContent = small; label.appendChild(sm); hw(sm, 400 + small.length * 5); }
+  }
+  function restLabel(){ label.innerHTML = restHTML; Array.prototype.forEach.call(label.querySelectorAll('[data-hw]'), function(e, i){ if (!e.classList.contains('hw')) hw(e, 500 + i); }); }
+
+  /* 빈 곳 찾기 : 시계·위쪽 글씨·아래 큰 제목을 피해서, 사진끼리도 안 겹치게 */
   function place(imgs){
     var vw = window.innerWidth, vh = window.innerHeight, gap = 14;
-    var rules = document.querySelectorAll('.rule');
-    var topMin = (rules.length ? rules[rules.length - 1].getBoundingClientRect().bottom : 90) + gap;
+    var band = document.querySelector('.band');
+    var topMin = (band ? band.getBoundingClientRect().bottom : 90) + gap;
     var title = document.querySelector('.title').getBoundingClientRect();
-    var botMax = Math.min(vh, title.top + title.height * 0.25) - gap;
+    var botMax = Math.min(vh, title.top + title.height * .25) - gap;
     var c = clock.getBoundingClientRect();
-    var taken = [{ l: c.left + c.width * 0.08, t: c.top + c.height * 0.08, r: c.right - c.width * 0.08, b: c.bottom - c.height * 0.08 }];
-    function over(a){   // 다른 것과 겹치는 넓이 (0이면 빈 곳)
+    var taken = [{ l: c.left + c.width * .08, t: c.top + c.height * .06, r: c.right - c.width * .08, b: c.bottom - c.height * .06 }];
+    var lb = label.getBoundingClientRect();                  // 프로젝트 이름표 자리도 피해요
+    if (lb.width) taken.push({ l: lb.left - 20, t: lb.top - 16, r: lb.right + 20, b: lb.bottom + 16 });
+    function over(a){
       return taken.reduce(function(s, o){
-        var w = Math.min(a.r, o.r + gap) - Math.max(a.l, o.l - gap), h = Math.min(a.b, o.b + gap) - Math.max(a.t, o.t - gap);
-        return s + (w > 0 && h > 0 ? w * h : 0);
+        var w = Math.min(a.r, o.r + gap) - Math.max(a.l, o.l - gap), hh = Math.min(a.b, o.b + gap) - Math.max(a.t, o.t - gap);
+        return s + (w > 0 && hh > 0 ? w * hh : 0);
       }, 0);
     }
     imgs.forEach(function(im){
-      var w = im.offsetWidth || 180;
-      var ratio = im.naturalWidth ? im.naturalHeight / im.naturalWidth : 1.25;
-      var hgt = Math.min(w * ratio, vh * 0.28); if (w * ratio > vh * 0.28) w = hgt / ratio;
+      var w = im.offsetWidth || 180, ratio = im.naturalWidth ? im.naturalHeight / im.naturalWidth : 1.25;
+      var hgt = Math.min(w * ratio, vh * .28); if (w * ratio > vh * .28) w = hgt / ratio;
       var best = null, bestO = Infinity;
       for (var t = 0; t < 300; t++){
-        var x = gap + Math.random() * Math.max(1, vw - w - gap * 2);
-        var y = topMin + Math.random() * Math.max(1, botMax - hgt - topMin);
-        var box = { l: x, t: y, r: x + w, b: y + hgt }, o = over(box);
-        if (o < bestO){ best = box; bestO = o; }
-        if (o === 0) break;                     // 빈 곳을 찾으면 바로 거기
+        var x = gap + Math.random() * Math.max(1, vw - w - gap * 2), y = topMin + Math.random() * Math.max(1, botMax - hgt - topMin);
+        var bx = { l: x, t: y, r: x + w, b: y + hgt }, o = over(bx);
+        if (o < bestO){ best = bx; bestO = o; }
+        if (o === 0) break;
       }
       taken.push(best);
-      im.style.left = (best.l + w / 2) + 'px';
-      im.style.top = (best.t + hgt / 2) + 'px';
+      im.style.left = (best.l + w / 2) + 'px'; im.style.top = (best.t + hgt / 2) + 'px';
       im.style.setProperty('--rot', (Math.random() * 12 - 6).toFixed(1) + 'deg');
     });
   }
-
+  /* 이름표 자리 : 올린 숫자 쪽 시계 바깥 (1시면 1시 쪽, 2시면 2시 쪽) */
+  var mobile = window.matchMedia('(max-width:640px)');
+  function putLabel(h){
+    label.classList.remove('at-l', 'at-r', 'at-t', 'at-b');
+    if (mobile.matches || !h){ label.style.left = label.style.top = ''; return; }
+    var deg = h === 12 ? 18 : h === 6 ? 162 : h * 30;         // 12시는 용두, 6시는 아래 큰 글씨를 피해 살짝 옆으로
+    var ang = deg * Math.PI / 180, sx = Math.sin(ang), cy = Math.cos(ang), rad = (R + 34) / 10;
+    label.classList.add(Math.abs(sx) < .3 ? (cy > 0 ? 'at-t' : 'at-b') : (sx > 0 ? 'at-r' : 'at-l'));
+    // 글씨가 시계에 닿으면 조금씩 바깥으로 밀어요
+    var cr = clock.getBoundingClientRect(), ccx = cr.left + cr.width * CX / 1000, ccy = cr.top + cr.height * CY / 1000, crad = cr.width * (R + 26) / 1000;
+    for (var step = 0; step < 40; step++){
+      label.style.left = (50 + sx * rad) + '%';
+      label.style.top = (CY / 10 - cy * rad) + '%';
+      var lr = label.getBoundingClientRect();
+      var nx = Math.max(lr.left, Math.min(ccx, lr.right)), ny = Math.max(lr.top, Math.min(ccy, lr.bottom));   // 글씨 상자에서 시계 가운데와 가장 가까운 점
+      if (Math.hypot(nx - ccx, ny - ccy) >= crad) break;
+      rad += 1;
+    }
+  }
   function show(it){
-    if (it) place(it.imgs);
+    if (it){ setLabel(it.d[1], it.d[2]); putLabel(it.h); } else { restLabel(); putLabel(0); }
+    if (it) place(it.imgs);                                  // 이름표 자리를 먼저 잡고, 사진은 그 자리를 피해서
     clock.classList.toggle('active', !!it);
     items.forEach(function(x){
       x.el.classList.toggle('on', x === it);
       x.imgs.forEach(function(im){ im.classList.toggle('on', x === it); });
     });
-    label.innerHTML = it ? it.d[1] + '<small>' + it.d[2] + '</small>' : rest;
     if (it) setHands(it.h * 30, 0); else setHands(nowH, nowM);   // 올린 숫자를 시침이 가리켜요
   }
 
   /* 아래 큰 글씨 : 커서를 세 번 움직이면 'Portfolio.'가 나와요 */
   (function(){
     var t = document.getElementById('title'); if (!t) return;
-    var moves = 0, last = 0, dist = 0, px = null, py = null;
+    var moves = 0, lastM = 0, dist = 0, qx = null, qy = null;
     function open(){ t.classList.add('open'); window.removeEventListener('mousemove', onMove); }
     function onMove(e){
       var now = Date.now();
-      if (px !== null) dist += Math.hypot(e.clientX - px, e.clientY - py);
-      px = e.clientX; py = e.clientY;
-      if (now - last > 350 || dist > 260){ moves++; dist = 0; }   // 멈췄다 다시 움직이거나, 한참 움직이면 한 번
-      last = now;
+      if (qx !== null) dist += Math.hypot(e.clientX - qx, e.clientY - qy);
+      qx = e.clientX; qy = e.clientY;
+      if (now - lastM > 350 || dist > 260){ moves++; dist = 0; }
+      lastM = now;
       if (moves >= 3) open();
     }
     window.addEventListener('mousemove', onMove);
-    if (window.matchMedia('(hover: none)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) setTimeout(open, 900);   // 휴대폰은 잠깐 뒤에
+    if (touch || reduced) setTimeout(open, 900);
   })();
 })();
 </script>
